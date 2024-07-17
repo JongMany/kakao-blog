@@ -11,3 +11,7 @@
 
 #!.yarn/cache
 .pnp.*
+
+# -- 아래 항목 추가 --
+node_modules
+dist
