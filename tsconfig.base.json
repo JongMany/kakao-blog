@@ -2,8 +2,16 @@
   "extends": "./tsconfig.spec.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@blog/common": [
+        "./packages/libs/common/src"
+      ]
+    }
   },
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./packages/libs/common"
+    }
+  ]
 }
