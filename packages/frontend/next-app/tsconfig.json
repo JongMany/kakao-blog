@@ -15,7 +15,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "target": "ES2020",
     "incremental": true,
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"
@@ -23,7 +25,7 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./src/*",
       ],
       "@blog/common": [
         "../../libs/common/src"
@@ -37,7 +39,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src"
   ],
   "exclude": [
     "node_modules"

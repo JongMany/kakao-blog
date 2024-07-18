@@ -21,6 +21,7 @@ export function JoinCard() {
   const submitHandler: SubmitHandler<JoinSchemaType> = async (data) => {
     // TODO: Fetch하기...
     const joinResult = await join(data);
+    console.log(joinResult);
   };
 
   return (

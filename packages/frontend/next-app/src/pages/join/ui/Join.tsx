@@ -1,4 +1,4 @@
-import { JoinCard } from "@/features/join/index";
+import { JoinCard } from "@/features/join/index.tsx";
 
 export default function Join() {
   return (
