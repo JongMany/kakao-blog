@@ -10,5 +10,3 @@ export async function initMocksWhenDevelopment() {
     initMocks();
   }
 }
-
-export * from "../handlers/handlers";
