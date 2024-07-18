@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Roboto, Noto_Sans_KR } from "next/font/google";
+
+import "./globals.css";
+import { MSWProvider } from "@/app/provider/msw/ui/MSWProvider";
+
+const roboto = Roboto({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-notoSansKr",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${roboto.variable} ${notoSansKr.variable}`}>
+        <MSWProvider>{children}</MSWProvider>
+      </body>
     </html>
   );
 }
