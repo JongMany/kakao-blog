@@ -91,6 +91,6 @@ pre-commit:
       run: yarn prettier --write $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
     eslint:
       glob: "*.{js,ts,jsx,tsx,json}"
-      run: yarn eslint $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
+      run: yarn workspaces foreach --all run lint --cache
+      # run: yarn eslint --fix --no-ignore $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
 
-      # run: yarn workspaces foreach --all run lint --cache
