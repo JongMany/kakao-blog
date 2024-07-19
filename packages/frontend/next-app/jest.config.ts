@@ -176,9 +176,8 @@ const config: Config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.ts?$": "ts-jest",
+    ".(ts|tsx)": "ts-jest",
   },
-
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
@@ -190,7 +189,7 @@ const config: Config = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  // verbose: undefined,
+  verbose: undefined,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],
@@ -198,9 +197,10 @@ const config: Config = {
   // Whether to use watchman for file crawling
   // watchman: true,
   moduleNameMapper: {
-    // "^@/(.*)$": path.resolve(__dirname, "./src/$1"),
-    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@/(.*)$": path.resolve(__dirname, "./src/$1"),
+    // "^@/(.*)$": "<rootDir>/src/$1",
   },
+  moduleFileExtensions: ["ts", "tsx", "js"],
 };
 
 export default config;
