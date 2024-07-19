@@ -11,6 +11,7 @@ export function JoinCard() {
     resolver: zodResolver(JoinSchema),
   });
   asd;
+  asd;
   const submitHandler: SubmitHandler<JoinSchemaType> = async (data) => {
     // TODO: Fetch하기...
     const joinResult = await join(data);
