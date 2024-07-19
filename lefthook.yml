@@ -96,10 +96,10 @@ pre-commit:
     frontend-lint:
       root: "packages/frontend/next-app"
       glob: "**/*.{js,ts,jsx,tsx,json}"
-      run: |
-        echo "Running ESLint for frontend {staged_files}" | tee -a pre-commit.log
-        yarn run lint 2>&1 | tee -a pre-commit.log
-      # run: yarn run lint
+      # run: |
+      #   echo "Running ESLint for frontend {staged_files}" | tee -a pre-commit.log
+      #   yarn run lint 2>&1 | tee -a pre-commit.log
+      run: yarn run lint
       # run: yarn workspaces foreach -p run lint --cache
     backend-lint:
       root: "packages/backend/nest-app"
