@@ -16,48 +16,41 @@
 //   "importOrderSeparation": true,
 //   "importOrderSortSpecifiers": true
 // }
-{
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+module.export = {
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
   },
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "import"
-  ],
-  "extends": [
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint", "import", "prettier"],
+  extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier",
   ],
-  "rules": {
+  rules: {
     "@typescript-eslint/consistent-type-imports": "error",
-    "import/order": "off"
+    "import/order": "off",
+    "prettier/prettier": "error",
   },
-  "settings": {
+  settings: {
     "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx",
-        ".js"
-      ]
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js"],
     },
     "import/resolver": {
-      "typescript": "./tsconfig.json"
+      typescript: "./tsconfig.json",
     },
-    "import/external-module-folders": [
-      ".yarn"
-    ]
+    "import/external-module-folders": [".yarn"],
   },
-  "ignorePatterns": [
+  ignorePatterns: [
     "dist",
     ".eslintrc.cjs",
     ".lintstagedrc.cjs",
     "commitlint.config.cjs",
     "jest.config.js",
     "vite.config.js",
-    "vitest.setup.js"
-  ]
-}
+    "vitest.setup.js",
+  ],
+};

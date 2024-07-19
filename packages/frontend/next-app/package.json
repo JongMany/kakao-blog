@@ -8,9 +8,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "test": "jest --config jest.config.ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint": "yarn eslint './**/*.{js,ts,tsx}' --fix",
+    "format": "yarn prettier --write \"./**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
     "@blog/common": "workspace:packages/libs/common",
@@ -36,6 +37,11 @@
     "cors": "^2.8.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "msw": "^2.3.1",

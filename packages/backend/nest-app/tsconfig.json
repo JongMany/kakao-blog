@@ -18,9 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@blog/common": [
-        "../../libs/common/src"
-      ],
+      "@blog/common": ["../../libs/common/src"]
     }
   }
 }

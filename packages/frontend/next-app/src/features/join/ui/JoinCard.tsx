@@ -1,19 +1,17 @@
 "use client";
-import {
-  JoinSchema,
-  type JoinSchemaType,
-} from "@/features/join/model/JoinForm.entity";
+import { JoinSchema, type JoinSchemaType } from "@/features/join/model/JoinForm.entity";
 import { Form, Input } from "@blog/components";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { join } from "@/features/join/api/join.api";
 
 export function JoinCard() {
   const {
     register,
     handleSubmit,
-    setValue,
-    formState: { errors },
+    // setValue,
+    // formState: { errors },
   } = useForm<JoinSchemaType>({
     resolver: zodResolver(JoinSchema),
   });
@@ -26,9 +24,7 @@ export function JoinCard() {
 
   return (
     <section>
-      <h1 className="font-notoSansKr text-xl font-bold mb-[24px]">
-        회원정보 입력
-      </h1>
+      <h1 className="font-notoSansKr text-xl font-bold mb-[24px]">회원정보 입력</h1>
       <Form className="flex flex-col" onSubmit={handleSubmit(submitHandler)}>
         <Input
           label="이름"

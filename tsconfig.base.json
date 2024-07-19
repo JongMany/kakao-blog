@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@blog/common": [
-        "./packages/libs/common/src"
-      ]
+      "@blog/common": ["./packages/libs/common/src"]
     }
   },
   "files": [],
