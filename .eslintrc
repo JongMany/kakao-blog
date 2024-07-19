@@ -37,7 +37,9 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": "error",
     "import/order": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-undef": "error",
+    "no-unused-vars": "error"
   },
   "settings": {
     "import/parsers": {

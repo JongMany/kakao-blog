@@ -10,7 +10,6 @@ export function JoinCard() {
   const { register, handleSubmit, setValue } = useForm<JoinSchemaType>({
     resolver: zodResolver(JoinSchema),
   });
-
   const submitHandler: SubmitHandler<JoinSchemaType> = async (data) => {
     // TODO: Fetch하기...
     const joinResult = await join(data);
