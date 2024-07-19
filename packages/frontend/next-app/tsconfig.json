@@ -5,6 +5,9 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "node"
+    ],
     "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
@@ -42,11 +45,10 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src",
-    "tests"
-    // "./jest.config.ts"
+    "tests",
+    "./jest.config.ts"
   ],
   "exclude": [
     "node_modules",
-    "얀ㅅ"
   ]
 }
