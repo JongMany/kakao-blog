@@ -9,7 +9,8 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "clean": "rimraf -rf ./dist",
-    "compile": "tsc"
+    "compile": "tsc",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/react": "^18",

@@ -15,6 +15,16 @@
     "packages/libs/frontend/*/*"
   ],
   "devDependencies": {
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7",
     "typescript": "^5.5.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --max-warnings=0",
+    "*.{ts,tsx,css,md}": "prettier --write",
+    "./packages/backend/nest-app/**/*.{ts,tsx}": "yarn workspace nest-app run type-check",
+    "./packages/frontend/next-app/**/*.{ts,tsx}": "yarn workspace next-app run type-check",
+    "./packages/libs/common/**/*.{ts,tsx}": "yarn workspace @blog/common run type-check",
+    "./packages/libs/frontend/components/**/*.{ts,tsx}": "yarn workspace @blog/components run type-check"
   }
 }
