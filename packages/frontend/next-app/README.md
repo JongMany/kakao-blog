@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 블로그
 
-## Getting Started
+## 아키텍처 - FSD
 
-First, run the development server:
+### Layer
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- app: 애플리케이션 로직이 초기화되는 곳.  
+  Provider, Router, 전역 스타일, 전역 타입 선언들이 들어감
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- pages: 애플리케이션의 페이지가 포함됨
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- widgets: 페이지에 사용되는 독립적인 UI 컴포넌트(레이아웃, Feature를 묶는 것)
+  고민할 거리) 어디까지 묶어야 재사용이 용이할지..?
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- features: 이 레이어는 비즈니스 가치를 전달하는 사용자 시나리오와 기능을 다룸.  
+  ex) 좋아요, 리뷰 작성, 제품 평가 등  
+  -> 동사가 slice / api segment에서는 해당 행동을 요청함
 
-## Learn More
+- entities: 비즈니스 엔티티를 나타냄
+  ex) 사용자, 리뷰, 댓글 등
+  -> 데이터가 slice / api segment에서는 해당 데이터를 조회
 
-To learn more about Next.js, take a look at the following resources:
+- shared: 특정 비즈니스 로직에 종속되지 않은 재사용 가능한 컴포넌트와 유틸리티가 포함되어 있음  
+  -> slice가 없는 유일한 계층
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Slice (Domain)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Segment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- ui
+- model
+- api
+- lib: 기타 유틸
+- const: 상수
