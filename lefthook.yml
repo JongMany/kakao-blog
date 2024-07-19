@@ -91,6 +91,6 @@ pre-commit:
       run: yarn prettier --write $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
     eslint:
       # glob: "*.{js,ts,jsx,tsx,json}"
-      glob: "packages/backend/nest-app/src/**/*.{ts,js,tsx} packages/backend/nest-app/test/**/*.{ts,js,tsx} packages/frontend/next-app/app/**/*.{ts,js,tsx} packages/frontend/next-app/src/**/*.{ts,js,tsx} packages/frontend/next-app/test/**/*.{ts,js,tsx} packages/libs/common/src/**/*.{ts,js,tsx} packages/libs/frontend/components/src/**/*.{ts,js,tsx}"
+      run: yarn eslint --fix $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
 
-      run: yarn workspaces foreach --all run lint --cache
+      # run: yarn workspaces foreach --all run lint --cache
