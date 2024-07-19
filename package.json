@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "nextapp": "yarn workspace next-app",
-    "nestapp": "yarn workspace nest-app"
+    "nestapp": "yarn workspace nest-app",
+    "lint-stage": "lint-staged",
+    "prepare": "husky",
+    "postinstall": "husky install"
   },
   "workspaces": [
     "packages/*",
@@ -15,8 +18,12 @@
     "packages/libs/frontend/*/*"
   ],
   "devDependencies": {
-    "husky": "^9.1.1",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "lefthook": "^1.7.4",
     "lint-staged": "^15.2.7",
+    "prettier": "^3.3.3",
     "typescript": "^5.5.3"
   },
   "lint-staged": {
