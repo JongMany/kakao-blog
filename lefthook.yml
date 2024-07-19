@@ -85,7 +85,7 @@
 
 pre-commit:
   parallel: true
-  tasks:
+  commands:
     prettier:
       glob: "*.{js,ts,tsx,json}"
       run: yarn prettier --write $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
@@ -95,8 +95,11 @@ pre-commit:
     # run: yarn eslint --fix --no-ignore $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
     frontend-lint:
       root: "packages/frontend/next-app"
-      # glob: "*.{js,ts,jsx,tsx,json}"
-      run: yarn run lint
+      glob: "**/*.{js,ts,jsx,tsx,json}"
+      run: |
+        echo "Running ESLint for frontend" | tee -a pre-commit.log
+        yarn run lint 2>&1 | tee -a pre-commit.log
+      # run: yarn run lint
       # run: yarn workspaces foreach -p run lint --cache
     backend-lint:
       root: "packages/backend/nest-app"
