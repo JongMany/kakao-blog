@@ -7,6 +7,7 @@
     "nestapp": "yarn workspace nest-app"
   },
   "workspaces": [
+    "packages/*",
     "packages/*/*",
     "packages/packages/*",
     "packages/libs/frontend/*",
