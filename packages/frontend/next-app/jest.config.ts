@@ -1,6 +1,6 @@
 // https://velog.io/@ksr20612/TypeScript-Jest-Cannot-use-import-statement-outside-module
 
-const path = require("path");
+import path from "path";
 
 import type { Config } from "jest";
 

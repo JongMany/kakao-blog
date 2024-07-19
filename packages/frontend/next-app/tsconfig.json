@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node"],
     "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,15 +22,9 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*",
-      ],
-      "@blog/common": [
-        "../../libs/common/src"
-      ],
-      "@blog/components": [
-        "../../libs/frontend/components/src"
-      ],
+      "@/*": ["./src/*"],
+      "@blog/common": ["../../libs/common/src"],
+      "@blog/components": ["../../libs/frontend/components/src"]
     }
   },
   "include": [
@@ -42,11 +33,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src",
-    "tests"
-    // "./jest.config.ts"
+    "tests",
+    "./jest.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "얀ㅅ"
-  ]
+  "exclude": ["node_modules"]
 }

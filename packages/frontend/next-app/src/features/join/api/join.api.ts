@@ -1,4 +1,4 @@
-import { JoinSchemaType } from "@/features/join/model/JoinForm.entity";
+import type { JoinSchemaType } from "@/features/join/model/JoinForm.entity";
 
 export async function join(joinForm: JoinSchemaType) {
   try {
