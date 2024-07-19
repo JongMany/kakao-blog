@@ -10,8 +10,8 @@ export function JoinCard() {
   const {
     register,
     handleSubmit,
-    // setValue,
-    // formState: { errors },
+    setValue,
+    formState: { errors },
   } = useForm<JoinSchemaType>({
     resolver: zodResolver(JoinSchema),
   });

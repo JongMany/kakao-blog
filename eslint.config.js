@@ -44,13 +44,4 @@ module.export = {
     },
     "import/external-module-folders": [".yarn"],
   },
-  ignorePatterns: [
-    "dist",
-    ".eslintrc.cjs",
-    ".lintstagedrc.cjs",
-    "commitlint.config.cjs",
-    "jest.config.js",
-    "vite.config.js",
-    "vitest.setup.js",
-  ],
 };
