@@ -7,12 +7,7 @@ import { useForm } from "react-hook-form";
 import { join } from "@/features/join/api/join.api";
 
 export function JoinCard() {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<JoinSchemaType>({
+  const { register, handleSubmit, setValue } = useForm<JoinSchemaType>({
     resolver: zodResolver(JoinSchema),
   });
 
