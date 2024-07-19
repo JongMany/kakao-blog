@@ -10,7 +10,7 @@
     "start": "next start",
     "test": "jest --config jest.config.ts",
     "type-check": "tsc --noEmit",
-    "lint": "yarn eslint './**/*.{js,ts,tsx}' --fix",
+    "lint": "yarn eslint --fix",
     "format": "yarn prettier --write \"./**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
