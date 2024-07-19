@@ -44,4 +44,5 @@ module.export = {
     },
     "import/external-module-folders": [".yarn"],
   },
+  ignorePatterns: ["dist", "node_modules", "build"],
 };
