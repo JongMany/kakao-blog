@@ -1,1 +1,1 @@
-export * from "@/features/join/ui/JoinCard";
+export * from "@/features/join/ui/join-card";
