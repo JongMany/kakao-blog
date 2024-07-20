@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
-import { MSWProvider } from "@/app/provider/index";
+import { AuthProvider, MSWProvider } from "@/app/provider/index";
 
 const roboto = Roboto({
   weight: ["400"],
@@ -30,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${notoSansKr.variable}`}>
-        <MSWProvider>{children}</MSWProvider>
+        <MSWProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </MSWProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { JoinSchema, type JoinSchemaType } from "@/features/join/model/JoinForm.entity";
+import { JoinSchema, type JoinSchemaType } from "@/features/join/index.ts";
 import { Form, Input } from "@blog/components";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";

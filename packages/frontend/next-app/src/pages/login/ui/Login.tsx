@@ -3,8 +3,8 @@ import LoginForm from "@/features/login/index.tsx";
 
 export default function Login() {
   return (
-    <div>
+    <main className="flex flex-col justify-center items-center">
       <LoginForm />
-    </div>
+    </main>
   );
 }

@@ -1,1 +1,1 @@
-export { default } from "@/features/login/ui/LoginForm";
+export { default } from "@/features/login/ui/login-form.component";
