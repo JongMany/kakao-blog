@@ -108,7 +108,8 @@ pre-push:
   parallel: true
   commands:
     branchName:
-      run: npx validate-branch-name
+      run: echo "Running validate-branch-name" && npx validate-branch-name
+      # run: npx validate-branch-name
     # packages-audit:
     #   tags: frontend security
     #   run: yarn audit
