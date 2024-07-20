@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Roboto, Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
-import MSWProvider from "@/app/provider/index";
+import { MSWProvider } from "@/app/provider/index";
 
 const roboto = Roboto({
   weight: ["400"],
