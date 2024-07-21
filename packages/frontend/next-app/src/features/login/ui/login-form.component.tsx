@@ -22,8 +22,8 @@ export default function LoginForm() {
   const submitHandler = (form: LoginSchemaType) => {
     signIn("credentials", {
       ...form,
-      redirect: false,
-      callbackUrl: "/login",
+      redirect: true,
+      callbackUrl: "/",
     });
   };
 
@@ -32,14 +32,14 @@ export default function LoginForm() {
       <h1 className="font-notoSansKr text-xl font-bold text-center">로그인</h1>
       <Form className="flex flex-col gap-y-2" onSubmit={handleSubmit(submitHandler)}>
         <Input
-          className="border-2 rounded-md w-[400px] py-[2px] px-[6px] text-[14px] "
+          className="border-2 rounded-md w-[400px] py-[4px] px-[8px] text-[14px] "
           type="email"
           label="이메일"
           placeholder="이메일을 입력해주세요"
           {...register("email")}
         />
         <Input
-          className="border-2 rounded-md w-[400px] py-[2px] px-[6px] text-[14px]"
+          className="border-2 rounded-md w-[400px] py-[4px] px-[8px] text-[14px]"
           type="password"
           label="비밀번호"
           placeholder="이메일을 입력해주세요"

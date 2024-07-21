@@ -8,11 +8,32 @@ export type ExtendedUser = DefaultSession["user"] & {
 };
 
 declare module "next-auth" {
-  interface Session {
+  type Session = {
     user: ExtendedUser;
+    accessToken?: string;
+    refreshToken?: string;
+  } & DefaultSession;
+
+  interface User {
+    id?: string;
+    email?: string;
+    name?: string;
+    nickname?: string;
+    image?: string;
+    accessToken?: string;
+    refreshToken?: string;
   }
 }
 
 declare module "@auth/core/jwt" {
-  interface JWT extends ExtendedUser {}
+  // interface JWT extends ExtendedUser {}
+  type JWT = {
+    id: string;
+    email: string;
+    name: string;
+    picture: string;
+    sub: string;
+    accessToken?: string;
+    refreshToken?: string;
+  };
 }

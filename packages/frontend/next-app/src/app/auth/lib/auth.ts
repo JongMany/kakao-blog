@@ -1,5 +1,6 @@
 import { CredentialsProvider } from "@/app/auth/lib/providers";
 import NextAuth from "next-auth";
+
 // https://github.com/zulmy-azhary/next-auth-boilerplate/blob/master/auth/index.ts
 //https://dev.to/nagatodev/how-to-integrate-next-auth-with-your-nextjs-application-4mn9
 
@@ -25,12 +26,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
-      console.log("jwt", token, user);
-      return token;
+    async jwt({ token, user, session }) {
+      // console.log("jwt", token, user, session);
+      if (!token.sub) return token;
+
+      return { ...token, ...user, ...session?.user };
     },
-    async session({ session, token }) {
-      console.log("session", session, token);
+    async session({ session, token, user }) {
+      session.user.email = token.email ?? user.email;
+      session.user.accessToken = (token.accessToken as string) ?? user.accessToken;
+      session.user.refreshToken = (token.refreshToken as string) ?? user.refreshToken;
+      session.user.nickname = (token.nickname as string) ?? user.name;
+      session.user.name = (token.nickname as string) ?? user.name;
+
       return session;
     },
     // async signIn({ user }) {},
