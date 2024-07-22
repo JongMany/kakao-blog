@@ -1,12 +1,13 @@
-import type { InputHTMLAttributes } from "react";
-import { forwardRef } from "react";
+import type { InputHTMLAttributes, PropsWithChildren } from "react";
+import React, { forwardRef } from "react";
 
 type Props = {
   label?: string;
   labelColor?: string;
+  validateButton: React.ReactNode;
 } & InputHTMLAttributes<HTMLInputElement>;
-export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, labelColor = "black", name, ...props }, ref) => {
+export const ValidateInput = forwardRef<HTMLInputElement, PropsWithChildren<Props>>(
+  ({ label, labelColor = "black", name, validateButton, ...props }, ref) => {
     return (
       <div className="flex flex-col">
         {label && (
@@ -21,7 +22,10 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             {label}
           </label>
         )}
-        <input name={name} ref={ref} {...props} />
+        <div>
+          <input name={name} ref={ref} {...props} />
+          {validateButton}
+        </div>
       </div>
     );
   },

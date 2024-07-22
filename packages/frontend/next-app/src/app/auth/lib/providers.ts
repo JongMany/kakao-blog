@@ -8,6 +8,10 @@ import { cookies } from "next/headers";
 export const CredentialsProvider = Credentials({
   id: "credentials",
   name: "Credentials",
+  credentials: {
+    email: { label: "Email", type: "email" },
+    password: { label: "Password", type: "password" },
+  },
   async authorize(credentials) {
     const validatedFields = LoginSchema.safeParse(credentials);
 
@@ -21,14 +25,11 @@ export const CredentialsProvider = Credentials({
         });
 
         const contentType = response.headers.get("content-type");
-        console.log("contentType", contentType);
         if (!contentType || !contentType.includes("application/json")) {
           return null;
         }
-        console.log("status", response.status);
         if (response.status === 200) {
           const setCookie = response.headers.get("Set-Cookie");
-          console.log("setCookie", setCookie, response.headers);
           if (setCookie) {
             const parsed = cookie.parse(setCookie);
             const cookieStore = cookies();
@@ -36,10 +37,13 @@ export const CredentialsProvider = Credentials({
               httpOnly: true,
               maxAge: 1000 * 60 * 60 * 24 * 7,
             });
-            const data = (await response.json()) as UserEntity;
+            const data = (await response.json()) as { data: UserEntity };
             if (!data) return null;
+
             return {
-              ...data,
+              email: data.data.email,
+              nickname: data.data.nickname,
+              accessToken: data.data.accessToken,
               refreshToken: parsed["refreshToken"] ?? null,
               // 다른 데이터도 넣어야 함
             };
