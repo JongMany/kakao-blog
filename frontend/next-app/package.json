@@ -1,5 +1,5 @@
 {
-  "name": "next-app",
+  "name": "@blog/frontend",
   "packageManager": "yarn@4.3.1+sha256.2535167e742927e1d2a1610d5004576e4e8f764d2ca5470d19536790f55cd6e2",
   "version": "0.1.0",
   "private": true,
@@ -15,8 +15,8 @@
     "format": "yarn prettier --write \"./**/*.{js,jsx,ts,tsx,json,md,css}\""
   },
   "dependencies": {
-    "@blog/common": "workspace:packages/libs/common",
-    "@blog/components": "workspace:packages/libs/frontend/components",
+    "@blog/common": "workspace:packages/common",
+    "@blog/components": "workspace:frontend/components",
     "@hookform/resolvers": "^3.9.0",
     "cookie": "^0.6.0",
     "express": "^4.19.2",

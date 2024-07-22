@@ -94,7 +94,7 @@ pre-commit:
     #   run: yarn workspaces foreach --all run lint --cache
     # run: yarn eslint --fix --no-ignore $(echo {staged_files} | sed -e 's/js\///g') && git add $(echo {staged_files} | sed -e 's/js\///g')
     frontend-lint:
-      root: "packages/frontend/next-app"
+      root: "frontend/next-app"
       glob: "**/*.{js,ts,jsx,tsx,json}"
       # run: |
       #   echo "Running ESLint for frontend {staged_files}" | tee -a pre-commit.log
@@ -102,7 +102,7 @@ pre-commit:
       run: yarn run lint
       # run: yarn workspaces foreach -p run lint --cache
     backend-lint:
-      root: "packages/backend/nest-app"
+      root: "backend/nest-app"
       run: yarn run lint
 pre-push:
   parallel: true

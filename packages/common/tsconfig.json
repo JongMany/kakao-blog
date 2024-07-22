@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig.base.json", // Route의 build.json을 상속
+  "extends": "../../tsconfig.base.json", // Route의 build.json을 상속
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "src",

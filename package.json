@@ -12,12 +12,9 @@
     "typecheck": "yarn tsc --noEmit"
   },
   "workspaces": [
-    "packages/*",
-    "packages/*/*",
-    "packages/packages/*",
-    "packages/libs/frontend/*",
-    "packages/libs/backend/*",
-    "packages/libs/frontend/*/*"
+    "packages/**/*",
+    "frontend/**/*",
+    "backend/**/*"
   ],
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
