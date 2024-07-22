@@ -3,7 +3,7 @@ import React from "react";
 import SadDog from "@/shared/assets/images/forbidden.png";
 import Image from "next/image";
 
-export default function Fobidden() {
+export default function Forbidden() {
   return (
     <main className="min-w-[300px]">
       <section className="flex justify-center ">

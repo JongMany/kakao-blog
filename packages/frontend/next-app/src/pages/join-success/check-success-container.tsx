@@ -1,11 +1,15 @@
 "use client";
 
-import Fobidden from "@/pages/join-success/forbidden";
-import type { PropsWithChildren } from "react";
+import type React from "react";
 import { useEffect, useState } from "react";
 
-export default function CheckSuccessContaienr({ children }: PropsWithChildren) {
-  const [isValidate, setIsValidate] = useState(true);
+type Props = {
+  welcome: React.ReactNode;
+  forbidden: React.ReactNode;
+};
+
+export default function CheckSuccessContaienr({ welcome, forbidden }: Props) {
+  const [isValidate, setIsValidate] = useState(false);
 
   useEffect(() => {
     const afterJoin = sessionStorage.getItem("joinSuccess");
@@ -18,5 +22,5 @@ export default function CheckSuccessContaienr({ children }: PropsWithChildren) {
     };
   }, []);
 
-  return isValidate ? children : <Fobidden />;
+  return isValidate ? welcome : forbidden;
 }
