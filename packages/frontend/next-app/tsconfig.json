@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
     "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
