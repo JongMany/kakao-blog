@@ -44,18 +44,18 @@ call_lefthook()
     elif test -f "$dir/frontend/next-app/node_modules/lefthook/bin/index.js"
     then
       "$dir/frontend/next-app/node_modules/lefthook/bin/index.js" "$@"
-    elif test -f "$dir/backend/nest-app/node_modules/lefthook-${osArch}-${cpuArch}/bin/lefthook"
+    elif test -f "$dir/backend/nest-backend/node_modules/lefthook-${osArch}-${cpuArch}/bin/lefthook"
     then
-      "$dir/backend/nest-app/node_modules/lefthook-${osArch}-${cpuArch}/bin/lefthook" "$@"
-    elif test -f "$dir/backend/nest-app/node_modules/@evilmartians/lefthook/bin/lefthook-${osArch}-${cpuArch}/lefthook"
+      "$dir/backend/nest-backend/node_modules/lefthook-${osArch}-${cpuArch}/bin/lefthook" "$@"
+    elif test -f "$dir/backend/nest-backend/node_modules/@evilmartians/lefthook/bin/lefthook-${osArch}-${cpuArch}/lefthook"
     then
-      "$dir/backend/nest-app/node_modules/@evilmartians/lefthook/bin/lefthook-${osArch}-${cpuArch}/lefthook" "$@"
-    elif test -f "$dir/backend/nest-app/node_modules/@evilmartians/lefthook-installer/bin/lefthook"
+      "$dir/backend/nest-backend/node_modules/@evilmartians/lefthook/bin/lefthook-${osArch}-${cpuArch}/lefthook" "$@"
+    elif test -f "$dir/backend/nest-backend/node_modules/@evilmartians/lefthook-installer/bin/lefthook"
     then
-      "$dir/backend/nest-app/node_modules/@evilmartians/lefthook-installer/bin/lefthook" "$@"
-    elif test -f "$dir/backend/nest-app/node_modules/lefthook/bin/index.js"
+      "$dir/backend/nest-backend/node_modules/@evilmartians/lefthook-installer/bin/lefthook" "$@"
+    elif test -f "$dir/backend/nest-backend/node_modules/lefthook/bin/index.js"
     then
-      "$dir/backend/nest-app/node_modules/lefthook/bin/index.js" "$@"
+      "$dir/backend/nest-backend/node_modules/lefthook/bin/index.js" "$@"
     
     elif bundle exec lefthook -h >/dev/null 2>&1
     then

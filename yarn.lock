@@ -1735,9 +1735,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@blog/backend@workspace:backend/nest-app":
+"@blog/backend@workspace:backend/nest-backend":
   version: 0.0.0-use.local
-  resolution: "@blog/backend@workspace:backend/nest-app"
+  resolution: "@blog/backend@workspace:backend/nest-backend"
   dependencies:
     "@blog/common": "workspace:packages/common"
     "@nestjs/cli": "npm:^10.0.0"
