@@ -1,18 +1,33 @@
-import { getEmailState, toggleEmailStorage } from "@/features/login/lib/email-storage";
-import type { LoginSchemaType } from "@/features/login/model/index";
-import { LoginSchema } from "@/features/login/model/index";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn } from "next-auth/react";
+import type { signIn as defaultSignIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import type {
+  getEmailState as defaultGetEmailState,
+  toggleEmailStorage as defaultToggleEmailStorage,
+} from "@/features/login/lib/email-storage";
 
-export const useLoginForm = () => {
+import type { LoginSchemaType } from "@/features/login/model/index";
+import { LoginSchema } from "@/features/login/model/index";
+
+type LoginFormDependencies = {
+  getEmailState: typeof defaultGetEmailState;
+  toggleEmailStorage: typeof defaultToggleEmailStorage;
+  signIn: typeof defaultSignIn;
+};
+
+export const useLoginForm = ({
+  getEmailState,
+  toggleEmailStorage,
+  signIn,
+}: LoginFormDependencies) => {
   const [rememberEmail, setRememberEmail] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    getValues,
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(LoginSchema),
   });
@@ -54,5 +69,6 @@ export const useLoginForm = () => {
     errors,
     submitHandler,
     toggleRememberEmail,
+    getValues,
   };
 };

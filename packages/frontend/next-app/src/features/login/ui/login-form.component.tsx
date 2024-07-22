@@ -4,10 +4,16 @@ import Link from "next/link";
 import { Checkbox, Form, Input } from "@blog/components/src";
 import ErrorConfirm from "@/shared/ui/errorConfirmation/ErrorConfirm";
 import { useLoginForm } from "@/features/login/hooks/useLoginForm";
+import { getEmailState, toggleEmailStorage } from "@/features/login/lib/email-storage";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const { register, rememberEmail, toggleRememberEmail, handleSubmit, submitHandler, errors } =
-    useLoginForm();
+    useLoginForm({
+      getEmailState,
+      toggleEmailStorage,
+      signIn,
+    });
 
   return (
     <section className="h-[450px] flex flex-col justify-evenly gap-y-5 border-2 px-4 rounded-2xl">
