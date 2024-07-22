@@ -102,7 +102,7 @@ pre-commit:
       run: yarn run lint
       # run: yarn workspaces foreach -p run lint --cache
     backend-lint:
-      root: "backend/nest-app"
+      root: "backend/nest-backend"
       run: yarn run lint
 pre-push:
   parallel: true
