@@ -1,5 +1,6 @@
 "use client";
 
+import { validateJoinSuccessFromSessionStorage } from "@/features/join/lib";
 import type React from "react";
 import { useEffect, useState } from "react";
 
@@ -12,14 +13,10 @@ export default function CheckSuccessContaienr({ welcome, forbidden }: Props) {
   const [isValidate, setIsValidate] = useState(false);
 
   useEffect(() => {
-    const afterJoin = sessionStorage.getItem("joinSuccess");
-    if (afterJoin) {
+    const isValidPageAccess = validateJoinSuccessFromSessionStorage<boolean>();
+    if (isValidPageAccess) {
       setIsValidate(true);
     }
-
-    return () => {
-      // sessionStorage.removeItem("joinSuccess");
-    };
   }, []);
 
   return isValidate ? welcome : forbidden;

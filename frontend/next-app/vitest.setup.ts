@@ -33,11 +33,6 @@ vi.mock("next-auth/react", () => ({
     if (email === "blackberry1114@naver.com" && password === "aaaa2222!") {
       const accessToken = "asdasdasdasd";
       const refreshToken = "asdasf1weads";
-      // const cookies = [
-      //   `accessToken=${accessToken}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=900`,
-      //   `refreshToken=${refreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=604800`,
-      //   "connect.sid=msw-cookie;HttpOnly;Path=/",
-      // ].join("; ");
 
       return {
         message: "로그인에 성공했습니다.",
