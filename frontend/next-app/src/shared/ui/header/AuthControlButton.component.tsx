@@ -5,8 +5,10 @@ import React from "react";
 
 export default async function AuthControlButton() {
   const session = await auth();
+  const nickname = session?.user?.nickname || "Guest";
+  const encodedNickname = encodeURIComponent(nickname);
   const isAuth = session !== null;
-  console.log(session);
+
   return (
     <div className="flex gap-x-2">
       {!isAuth && <Link href="/login">로그인</Link>}
@@ -14,9 +16,11 @@ export default async function AuthControlButton() {
         <>
           <span>
             <strong className="font-semibold underline underline-offset-2 cursor-pointer">
-              <Link href={`/profile/${session.user?.nickname}`}>
-                {session.user?.nickname || "Guest"}
-              </Link>
+              {session.user?.nickname ? (
+                <Link href={`/profile/${encodedNickname}`}>{session.user?.nickname}</Link>
+              ) : (
+                " Guest"
+              )}
             </strong>
             님 안녕하세요
           </span>
