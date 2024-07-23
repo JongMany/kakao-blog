@@ -9,6 +9,7 @@ import type {
 
 import type { LoginSchemaType } from "@/features/login/model/index";
 import { LoginSchema } from "@/features/login/model/index";
+import { useRouter } from "next/navigation";
 
 type LoginFormDependencies = {
   getEmailState: typeof defaultGetEmailState;
@@ -22,6 +23,8 @@ export const useLoginForm = ({
   signIn,
 }: LoginFormDependencies) => {
   const [rememberEmail, setRememberEmail] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -36,13 +39,24 @@ export const useLoginForm = ({
    * 로그인 폼 제출 핸들러 함수
    * @param form 로그인 폼 데이터
    */
-  const submitHandler = (form: LoginSchemaType) => {
-    toggleEmailStorage({ shouldRemember: rememberEmail, email: form.email });
-    signIn("credentials", {
-      ...form,
-      redirect: true,
-      callbackUrl: "/",
-    });
+  const submitHandler = async (form: LoginSchemaType) => {
+    try {
+      toggleEmailStorage({ shouldRemember: rememberEmail, email: form.email });
+      // const response = await
+      const response = await signIn("credentials", {
+        ...form,
+        redirect: false,
+      });
+      if (response?.error) {
+        throw new Error("로그인에 실패했습니다.");
+      } else {
+        router.replace("/");
+      }
+      console.log("response", response);
+    } catch (error) {
+      setLoginError("로그인에 실패했습니다!");
+      console.log(error);
+    }
   };
 
   /**
@@ -57,8 +71,11 @@ export const useLoginForm = ({
     const emailState = getEmailState();
     if (emailState.shouldRemember) {
       emailState.email && setValue("email", emailState.email);
+      setRememberEmail(emailState.shouldRemember);
+    } else {
+      setValue("email", "");
+      setRememberEmail(false);
     }
-    setRememberEmail(emailState.shouldRemember);
   }, [setValue]);
 
   return {
@@ -70,5 +87,6 @@ export const useLoginForm = ({
     submitHandler,
     toggleRememberEmail,
     getValues,
+    loginError,
   };
 };

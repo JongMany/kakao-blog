@@ -35,8 +35,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src",
-    "tests",
-    "./jest.config.ts"
+    "tests"
   ],
   "exclude": ["node_modules"]
 }

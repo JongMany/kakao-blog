@@ -38,7 +38,8 @@ export const CredentialsProvider = Credentials({
               maxAge: 1000 * 60 * 60 * 24 * 7,
             });
             const data = (await response.json()) as { data: UserEntity };
-            if (!data) return null;
+            // console.log("data", data);
+            if (!data) throw new Error("로그인에 실패했습니다.");
 
             return {
               email: data.data.email,
@@ -48,11 +49,13 @@ export const CredentialsProvider = Credentials({
               // 다른 데이터도 넣어야 함
             };
           }
-          return null;
+          throw new Error("로그인에 실패했습니다.");
+        } else {
+          throw new Error("로그인에 실패했습니다.");
         }
       } catch (error) {
         console.error("로그인 실패", error);
-        return null;
+        throw new Error("로그인에 실패했습니다.");
       }
     }
 

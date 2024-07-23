@@ -25,14 +25,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  events: {
+    signOut() {},
+  },
   callbacks: {
     async jwt({ token, user, session }) {
-      // console.log("jwt", token, user, session);
+      console.log("auth.ts jwt", token, user, session);
       if (!token.sub) return token;
-
       return { ...token, ...user, ...session?.user };
     },
     async session({ session, token, user }) {
+      console.log("auth.ts session", session, token, user);
       session.user.email = token.email ?? user.email;
       session.user.accessToken = (token.accessToken as string) ?? user.accessToken;
       session.user.refreshToken = (token.refreshToken as string) ?? user.refreshToken;
@@ -43,4 +46,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     // async signIn({ user }) {},
   },
+  trustHost: true,
 });

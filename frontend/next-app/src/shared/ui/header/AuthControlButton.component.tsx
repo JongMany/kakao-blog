@@ -1,10 +1,11 @@
-import { auth } from "@/app/auth";
+"use client";
 import LogoutButton from "@/shared/ui/button/LogoutButton";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
-export default async function AuthControlButton() {
-  const session = await auth();
+export default function AuthControlButton() {
+  const { data: session } = useSession();
   const nickname = session?.user?.nickname || "Guest";
   const encodedNickname = encodeURIComponent(nickname);
   const isAuth = session !== null;
@@ -16,7 +17,7 @@ export default async function AuthControlButton() {
         <>
           <span>
             <strong className="font-semibold underline underline-offset-2 cursor-pointer">
-              {session.user?.nickname ? (
+              {session?.user?.nickname ? (
                 <Link href={`/profile/${encodedNickname}`}>{session.user?.nickname}</Link>
               ) : (
                 " Guest"

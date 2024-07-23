@@ -1,4 +1,4 @@
-import type { LoginSchemaType } from "@/features/login/index";
+import type { LoginSchemaType } from "@/features/login/model/index";
 
 export async function login(loginDTO: LoginSchemaType) {
   try {
@@ -12,7 +12,7 @@ export async function login(loginDTO: LoginSchemaType) {
       credentials: "include",
     });
     if (!response.ok) {
-      throw new Error("회원가입에 실패했습니다.");
+      throw new Error("로그인에 실패했습니다.");
     }
     return response;
   } catch (error) {

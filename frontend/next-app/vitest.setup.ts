@@ -5,6 +5,7 @@ const server = setupServer(...handlers);
 import { handlers } from "@/app/msw";
 
 import { afterAll, afterEach, beforeAll } from "vitest";
+
 // beforeAll()에서 msw 서버 시작
 beforeAll(() => {
   console.log("Server Open!");
@@ -16,3 +17,44 @@ afterEach(() => server.resetHandlers());
 
 // afterAll()에서 msw 서버 종료
 afterAll(() => server.close());
+
+// Mock useRouter:
+vi.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: vi.fn(),
+      replace: vi.fn(),
+    };
+  },
+}));
+
+vi.mock("next-auth/react", () => ({
+  signIn: vi.fn(async ({ email, password }) => {
+    if (email === "blackberry1114@naver.com" && password === "aaaa2222!") {
+      const accessToken = "asdasdasdasd";
+      const refreshToken = "asdasf1weads";
+      // const cookies = [
+      //   `accessToken=${accessToken}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=900`,
+      //   `refreshToken=${refreshToken}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=604800`,
+      //   "connect.sid=msw-cookie;HttpOnly;Path=/",
+      // ].join("; ");
+
+      return {
+        message: "로그인에 성공했습니다.",
+        data: {
+          accessToken,
+          refreshToken,
+          email: email,
+          nickname: "블랙베리",
+        },
+        success: true,
+      };
+    } else {
+      return {
+        message: "로그인에 실패했습니다.",
+        error: "로그인에 실패했습니다.",
+        success: false,
+      };
+    }
+  }),
+}));
