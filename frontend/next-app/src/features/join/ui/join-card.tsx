@@ -11,7 +11,9 @@ import ErrorConfirm from "@/shared/ui/errorConfirmation/index";
 import { checkDuplicate } from "@/features/join/api/check-duplicate.api";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { setJoinSuccessExpirationInSessionStorage } from "@/features/join/lib/index";
 
+// TODO: Hook으로 관심사를 분리하고 로직을 따로 떼는게 좋지 않을까?
 export function JoinCard() {
   const router = useRouter();
   const [duplicateState, setDuplicateState] = useState({
@@ -36,10 +38,9 @@ export function JoinCard() {
   });
 
   const submitHandler: SubmitHandler<JoinSchemaType> = async (data) => {
-    // TODO: Fetch하기...
     const joinResult = await join(data);
     if (joinResult.success) {
-      sessionStorage.setItem("joinSuccess", "true");
+      setJoinSuccessExpirationInSessionStorage(true);
       router.replace("/join/success");
     }
   };
