@@ -4,10 +4,11 @@ type Props = {
 };
 
 interface RememberEmailState {
-  email?: string;
+  email: string;
   shouldRemember: boolean;
 }
 
+/* rememberEmail 상태에 따라 LocalSotrage에 데이터를 저장할지 말지를 결정 */
 export const toggleEmailStorage = ({ email, shouldRemember = false }: Props) => {
   if (shouldRemember) {
     const persistState: RememberEmailState = {
@@ -18,6 +19,7 @@ export const toggleEmailStorage = ({ email, shouldRemember = false }: Props) => 
   } else {
     const persistState: RememberEmailState = {
       shouldRemember,
+      email: "",
     };
     localStorage.setItem("persistEmail", JSON.stringify(persistState));
   }
@@ -30,5 +32,6 @@ export const getEmailState = (): RememberEmailState => {
   }
   return {
     shouldRemember: false,
+    email: "",
   };
 };

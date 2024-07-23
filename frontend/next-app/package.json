@@ -8,8 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --config jest.config.ts",
-    "test:vitest": "vitest",
+    "test": "vitest",
     "type-check": "tsc --noEmit",
     "lint": "yarn eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "yarn prettier --write \"./**/*.{js,jsx,ts,tsx,json,md,css}\""
