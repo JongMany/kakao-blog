@@ -18,5 +18,5 @@ export function setJoinSuccessExpirationInSessionStorage(value: boolean) {
 // 일정 시간 이상 지나면 삭제될 수 있는 정보를 담은 객체를 sessionStorage에 저장
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
 export function validateJoinSuccessFromSessionStorage() {
-  return validateExpirationStateFromSessionStorage<boolean>("joinSuccess");
+  return validateExpirationStateFromSessionStorage<boolean>("joinSuccess")(false);
 }

@@ -13,7 +13,7 @@ export default function CheckSuccessContaienr({ welcome, forbidden }: Props) {
   const [isValidate, setIsValidate] = useState(false);
 
   useEffect(() => {
-    const isValidPageAccess = validateJoinSuccessFromSessionStorage<boolean>();
+    const isValidPageAccess = validateJoinSuccessFromSessionStorage();
     if (isValidPageAccess) {
       setIsValidate(true);
     }
