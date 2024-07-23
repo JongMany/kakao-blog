@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-//https://github.com/joao-vitor-felix/prime/blob/5e9e61bf8485047ad075e94ee2d09cd9122f90be/.vitest/setup.ts#L1
+// test utils: https://github.com/joao-vitor-felix/prime/blob/5e9e61bf8485047ad075e94ee2d09cd9122f90be/.vitest/setup.ts#L1
 import { useLoginForm } from "@/features/login/hooks/useLoginForm";
 // import { renderHook, act } from "@testing-library/react-hooks";
 import { renderHook, act } from "@testing-library/react"; // React v18 이후
